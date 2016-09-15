@@ -15,7 +15,7 @@ node {
     try {
 
       // Run application using Docker image
-      sh "docker run odilontalk/docker-jenkins-pipeline:${env.BUILD_NUMBER}"
+      // sh "docker run odilontalk/docker-jenkins-pipeline:${env.BUILD_NUMBER}"
 
     } catch (error) {
 
@@ -29,6 +29,7 @@ node {
     try {
 
       sh "mvn test"
+      
       docker.build("odilontalk/docker-jenkins-pipeline:${env.BUILD_NUMBER}").push()
 
     } catch (error) {
